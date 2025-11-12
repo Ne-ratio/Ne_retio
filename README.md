@@ -17,6 +17,6 @@ This tool implements the phylogenetic framework described in Lu et al. for robus
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/ne_ratio_calculator.git
+git clone https://github.com/Ne-ratio/Ne_retio/ne_ratio_calculator.git
 cd ne_ratio_calculator
 pip install -e .
