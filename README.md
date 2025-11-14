@@ -33,3 +33,8 @@ This will output the Ne ratios for the various genomic compartments.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Citation
+Lu, L., Dai, W., Pan, Y., & Yan, Z. (in preparation). A Divergence-Calibrated Framework for Robust Cross-Species Comparison of Effective Population Size Ratios. Manuscript in preparation for Methods in Ecology and Evolution.
+
+(The manuscript and associated tool are available at: https://github.com/Ne-ratio/Ne_ratio)
