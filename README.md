@@ -1,40 +1,57 @@
-# Ne Ratio Calculator
+# Estimating Effective Population Size Ratios Across Genomic Compartments
 
-This repository contains a computational framework for estimating relative effective population size (Ne) ratios across different genomic compartments using data from VCF files. The method uses interspecies divergence to calibrate for mutation rate variation.
+This repository contains scripts and data examples for the paper:
 
-## Introduction
+> **A phylogenetically informed framework for estimating effective population size ratios across genomic compartments**  
+> Liangyu Lu, Wennan Dai, Yuhao Pan, Zheng Yan  
+> *State Key Laboratory of Grassland Agro-Ecosystems & College of Ecology, Lanzhou University*
 
-The framework estimates Ne ratios between autosomes, X chromosome, Y chromosome, and mitochondrial DNA (mtDNA). The primary advantage of the method is its use of interspecies divergence to correct for varying mutation rates, enabling robust and reliable estimation of Ne ratios across species.
+## Overview
 
-## Dependencies
+We present a phylogenetic framework to estimate relative effective population size (*Nₑ*) ratios across genomic compartments (autosomes, X, Y, mtDNA) using interspecies divergence to calibrate mutation rates.
 
-To run the scripts, you need the following dependencies:
+Key features:
+- Uses diversity (π) and divergence (D) to cancel out mutation rate and time
+- Provides unbiased *Nₑ* ratio estimates
+- Applicable to non-model organisms
 
-- Python 3.7+
-- NumPy
-- SciPy
-- Biopython
+## File Structure
 
-You can install them using the following command:
-pip install -r requirements.txt
-
-## Scripts
-
-- `calculate_ne.py`: This script takes VCF files as input, computes nucleotide diversity (π) across sliding windows, calculates sequence divergence, and then estimates Ne ratios.
-- `popgenWindows.py`: This script calculates nucleotide diversity using non-overlapping 50 kb sliding windows.
+- `scripts/`: Python scripts for calculating diversity, divergence, and *Nₑ* ratios
+- `data/`: Example input/output files
+- `figures/`: Example output plot
 
 ## Usage
 
-1. Place your VCF file(s) in the `/data` folder or provide the path to your file.
-2. Run the `calculate_ne.py` script as follows:
-python calculate_ne.py --vcf /path/to/your_file.vcf
-This will output the Ne ratios for the various genomic compartments.
+1. Install Dependencies
 
-## License
+```bash
+pip install -r requirements.txt
+2. Compute Nucleotide Diversity (π)
+Use compute_diversity.py to calculate π from VCF files:
+bash
+python scripts/compute_diversity.py --vcf <input.vcf> --windows 50000 --out diversity.csv
+3. Compute Divergence (D)
+Use compute_divergence.py to calculate divergence from an outgroup:
+bash
+python scripts/compute_divergence.py --alignment <alignment.fa> --outgroup macaque --out divergence.csv
+4. Estimate Nₑ Ratios
+Use Ne_ratio_calculator.py to compute ratios:
+bash
+python scripts/Ne_ratio_calculator.py --diversity diversity.csv --divergence divergence.csv --out Ne_ratios.csv
+Example Data
+See data/diversity_example.csv and data/divergence_example.csv for expected input formats.
+Output
+The final output (Ne_ratios_output.csv) includes:
+Species
+NₑX:NₑA
+NₑY:NₑA
+NₑMT:NₑA
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Citation
+# Citation
 Lu, L., Dai, W., Pan, Y., & Yan, Z. (in preparation). A Divergence-Calibrated Framework for Robust Cross-Species Comparison of Effective Population Size Ratios. Manuscript in preparation for Methods in Ecology and Evolution.
 
 (The manuscript and associated tool are available at: https://github.com/Ne-ratio/Ne_ratio)
+
+# Contact
+For questions, please contact Zheng Yan (zheng.yan@lzu.edu.cn).
