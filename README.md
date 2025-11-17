@@ -54,4 +54,4 @@ Lu, L., Dai, W., Pan, Y., & Yan, Z. (in preparation). A Divergence-Calibrated Fr
 (The manuscript and associated tool are available at: https://github.com/Ne-ratio/Ne_ratio)
 
 # Contact
-For questions, please contact Zheng Yan (zheng.yan@lzu.edu.cn).
+For questions, please contact Zheng Yan (yanz@lzu.edu.cn).
